@@ -1,3 +1,38 @@
-body {
-  background-color: #fff;
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+.header {
+  display: flex;
+  justify-content: space-around;
+  background-color: rgba(240, 248, 255, 0.767);
+  padding: 20px;
+}
+.head {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+.nav {
+  display: flex;
+  gap: 40px;
+  list-style: none;
+  justify-content: center;
+  align-items: center;
+  font-family: 'Rubik', sans-serif;
+  font-size: 24px;
+  margin-right: 20px;
+}
+.links {
+  text-decoration: none;
+  color: #000;
+}
+.image {
+  background-image: url('./Assets/Images/logo.png');
+  height: 100px;
+  width: 100px;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
