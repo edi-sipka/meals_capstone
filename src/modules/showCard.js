@@ -4,7 +4,7 @@ import popup from "./popup.js";
 const showCard = async () => {
   try {
     const meal = await fetch(
-      "https://www.themealdb.com/api/json/v1/1/search.php?s"
+      "https://www.themealdb.com/api/json/v1/1/search.php?s",
     );
     const { meals } = await meal.json();
     meals.map((data) => {
