@@ -42,3 +42,15 @@
   text-decoration: none;
   color: #000;
 }
+
+
+/* Footer  */
+.footer {
+  background-color: rgba(201, 226, 248, 0.767);
+  font-family: 'Rubik', sans-serif;
+  font-size: 20px;
+  color: #000;
+  padding: 10px;
+  display: flex;
+  justify-content: center;
+}
