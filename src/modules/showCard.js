@@ -46,9 +46,9 @@ const showCard = async () => {
       commentButton.addEventListener('click', () => {
         popup(idMeal);
       });
-      reservationButton.addEventListener('click',() =>{
+      reservationButton.addEventListener('click', () => {
         reservation(idMeal);
-      })
+      });
 
       cardData.appendChild(col);
       col.appendChild(card);
