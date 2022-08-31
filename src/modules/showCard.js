@@ -1,5 +1,6 @@
 import { cardData } from './getElements.js';
 import popup from './popup.js';
+import reservation from './reservation.js';
 
 const showCard = async () => {
   try {
@@ -44,6 +45,9 @@ const showCard = async () => {
 
       commentButton.addEventListener('click', () => {
         popup(idMeal);
+      });
+      reservationButton.addEventListener('click', () => {
+        reservation(idMeal);
       });
 
       cardData.appendChild(col);
