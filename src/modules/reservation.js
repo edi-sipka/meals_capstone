@@ -54,7 +54,6 @@ const reservation = async (idMeal) => {
     detailsPopup.classList = 'details';
     detailsPopup.id = 'details';
     detailsPopup.innerHTML = ` 
-
     <p class="meal" id="meal">Meal: ${strMeal}</p>
     <p class="meal" id="meal">Category: ${strCategory}</p>
     <p class="meal" id="meal">Area: ${strArea}</p>

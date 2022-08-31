@@ -1,16 +1,14 @@
-import { cardData } from './getElements.js';
-import popup from './popup.js';
-import reservation from './reservation.js';
+import addLikes from "./addLikes.js";
+import { mealDB, setLikes } from "./apis.js";
+import { cardData } from "./getElements.js";
+import popup from "./popup.js";
+import reservation from "./reservation.js";
 
 const showCard = async () => {
   try {
-    const meal = await fetch(
-      'https://www.themealdb.com/api/json/v1/1/search.php?s',
-    );
+    const meal = await fetch(mealDB);
     const { meals } = await meal.json();
-    const like = await fetch(
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/likes',
-    );
+    const like = await fetch(setLikes);
     const likes = await like.json();
 
     meals.map((data) => {
@@ -32,25 +30,30 @@ const showCard = async () => {
       const cardTitle = document.createElement('h3');
       cardTitle.className = 'card-title';
       cardTitle.innerText = strMeal;
-      const div = document.createElement('div');
-      const heartIcon = document.createElement('i');
-      heartIcon.className = 'fa fa-heart';
-      const cardFooter = document.createElement('div');
-      cardFooter.className = 'card-footer';
-      const commentButton = document.createElement('button');
-      commentButton.className = 'btn';
-      commentButton.innerText = 'Comment';
-      commentButton.setAttribute('id', 'showPopup');
-      const reservationButton = document.createElement('button');
-      reservationButton.className = 'btn';
-      reservationButton.innerText = 'Reservation';
-
+      const div = document.createElement("div");
+      const heartIcon = document.createElement("i");
+      heartIcon.className = "fa fa-heart";
+      const cardText = document.createElement("p");
+      cardText.className = "card-text";
+      const cardFooter = document.createElement("div");
+      cardFooter.className = "card-footer";
+      const commentButton = document.createElement("button");
+      commentButton.className = "btn";
+      commentButton.innerText = "Comment";
+      commentButton.setAttribute("id", "showPopup");
+      const reservationButton = document.createElement("button");
+      reservationButton.className = "btn";
+      reservationButton.innerText = "Reservation";
       commentButton.addEventListener('click', () => {
         popup(idMeal);
       });
 
       reservationButton.addEventListener('click', () => {
         reservation(idMeal);
+      });
+
+      heartIcon.addEventListener("click", () => {
+        addLikes(idMeal, cardText);
       });
 
       cardData.appendChild(col);
@@ -69,17 +72,12 @@ const showCard = async () => {
       const findId = likes.find((likes) => likes.item_id === idMeal);
 
       if (findId === undefined) {
-        const cardText = document.createElement('p');
-        cardText.className = 'card-text';
         cardText.innerText = `0 Likes`;
-        div.appendChild(cardText);
       } else {
-        const cardText = document.createElement('p');
-        cardText.className = 'card-text';
         cardText.innerText = `${findId.likes} Likes`;
-        div.appendChild(cardText);
       }
 
+      div.appendChild(cardText);
       return data;
     });
   } catch (error) {
