@@ -1,55 +1,52 @@
-import '../popup.css';
+import "../popup.css";
+import { mealDB } from "./apis";
 // import pizza from '../Assets/Images/pizza.png';
 
 // popup div
 
 const reservation = async (idMeal) => {
-  const reservation = document.createElement('div');
-  reservation.id = 'reservation';
-  reservation.classList = 'reservation';
+  const reservation = document.createElement("div");
+  reservation.id = "reservation";
+  reservation.classList = "reservation";
   document.body.appendChild(reservation);
 
   // popup window
-  const popupWindow = document.createElement('div');
-  popupWindow.classList = 'window';
+  const popupWindow = document.createElement("div");
+  popupWindow.classList = "window";
   reservation.appendChild(popupWindow);
 
-  const popupHead = document.createElement('div');
-  popupHead.classList = 'popup-head';
-  popupHead.id = 'popup-head';
+  const popupHead = document.createElement("div");
+  popupHead.classList = "popup-head";
+  popupHead.id = "popup-head";
 
   popupWindow.appendChild(popupHead);
 
-  const xButton = document.createElement('p');
-  xButton.id = 'close';
-  xButton.classList = 'close';
-  xButton.innerHTML = 'X';
+  const xButton = document.createElement("p");
+  xButton.id = "close";
+  xButton.classList = "close";
+  xButton.innerHTML = "X";
   popupHead.appendChild(xButton);
 
-  const imagePopup = document.createElement('img');
-  const meal = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/search.php?s',
-  );
+  const imagePopup = document.createElement("img");
+  const meal = await fetch(mealDB);
   const { meals } = await meal.json();
   const data = meals.find((card) => card.idMeal === idMeal);
-  const {
-    strMeal, strCategory, strArea, strIngredient1, strMealThumb,
-  } = data;
+  const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } = data;
   imagePopup.src = strMealThumb;
-  imagePopup.classList = 'image-popup';
-  imagePopup.id = 'image-popup';
+  imagePopup.classList = "image-popup";
+  imagePopup.id = "image-popup";
   popupWindow.appendChild(imagePopup);
 
-  const popupHeading = document.createElement('h2');
-  popupHeading.id = 'title';
-  popupHeading.classList = 'title';
+  const popupHeading = document.createElement("h2");
+  popupHeading.id = "title";
+  popupHeading.classList = "title";
   popupHeading.innerHTML = strMeal;
   popupWindow.appendChild(popupHeading);
 
   // Popup Details
-  const detailsPopup = document.createElement('div');
-  detailsPopup.classList = 'details';
-  detailsPopup.id = 'details';
+  const detailsPopup = document.createElement("div");
+  detailsPopup.classList = "details";
+  detailsPopup.id = "details";
   detailsPopup.innerHTML = ` 
 
     <p class="meal" id="meal">Meal: ${strMeal}</p>
@@ -61,7 +58,7 @@ const reservation = async (idMeal) => {
 
   // Closing element
   if (xButton) {
-    xButton.addEventListener('click', () => {
+    xButton.addEventListener("click", () => {
       reservation.remove();
     });
   }

@@ -1,6 +1,8 @@
-import './style.css';
-import showCard from './modules/showCard.js';
+import "./style.css";
+import showCard from "./modules/showCard.js";
+import getCounter from "./modules/getCounter";
 
-document.addEventListener('DOMContentLoaded', () => {
+document.addEventListener("DOMContentLoaded", () => {
   showCard();
+  getCounter();
 });
