@@ -3,7 +3,7 @@ import '../popup.css';
 
 // popup div
 
-const popup = async () => {
+const popup = async (idMeal) => {
   const popup = document.createElement('div');
   popup.id = 'popup';
   popup.classList = 'popup';
@@ -28,38 +28,36 @@ const popup = async () => {
 
   const imagePopup = document.createElement('img');
   const meal = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/random.php',
+    'https://www.themealdb.com/api/json/v1/1/search.php?s',
   );
   const { meals } = await meal.json();
-  meals.map((data) => {
-    const {
-      strMeal, strCategory, strArea, strIngredient1, strMealThumb,
-    } = data;
-    imagePopup.src = strMealThumb;
-    imagePopup.classList = 'image-popup';
-    imagePopup.id = 'image-popup';
-    popupWindow.appendChild(imagePopup);
+  const data = meals.find((card) => card.idMeal === idMeal);
+  const {
+    strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+  } = data;
+  imagePopup.src = strMealThumb;
+  imagePopup.classList = 'image-popup';
+  imagePopup.id = 'image-popup';
+  popupWindow.appendChild(imagePopup);
 
-    const popupHeading = document.createElement('h2');
-    popupHeading.id = 'title';
-    popupHeading.classList = 'title';
-    popupHeading.innerHTML = strMeal;
-    popupWindow.appendChild(popupHeading);
+  const popupHeading = document.createElement('h2');
+  popupHeading.id = 'title';
+  popupHeading.classList = 'title';
+  popupHeading.innerHTML = strMeal;
+  popupWindow.appendChild(popupHeading);
 
-    // Popup Details
-    const detailsPopup = document.createElement('div');
-    detailsPopup.classList = 'details';
-    detailsPopup.id = 'details';
-    detailsPopup.innerHTML = ` 
+  // Popup Details
+  const detailsPopup = document.createElement('div');
+  detailsPopup.classList = 'details';
+  detailsPopup.id = 'details';
+  detailsPopup.innerHTML = ` 
 
     <p class="meal" id="meal">Meal: ${strMeal}</p>
     <p class="meal" id="meal">Category: ${strCategory}</p>
     <p class="meal" id="meal">Area: ${strArea}</p>
     <p class="meal" id="meal">Ingredient: ${strIngredient1}</p>
     `;
-    popupWindow.appendChild(detailsPopup);
-    return data;
-  });
+  popupWindow.appendChild(detailsPopup);
 
   // Closing element
   if (xButton) {
