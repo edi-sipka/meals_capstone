@@ -5,11 +5,11 @@ import reservation from "./reservation.js";
 const showCard = async () => {
   try {
     const meal = await fetch(
-      "https://www.themealdb.com/api/json/v1/1/search.php?s"
+      "https://www.themealdb.com/api/json/v1/1/search.php?s",
     );
     const { meals } = await meal.json();
     const like = await fetch(
-      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/likes"
+      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/likes",
     );
     const likes = await like.json();
 
@@ -65,9 +65,9 @@ const showCard = async () => {
       div.appendChild(heartIcon);
       cardFooter.appendChild(commentButton);
       cardFooter.appendChild(reservationButton);
-      
+
       const findId = likes.find((likes) => likes.item_id === idMeal);
-      
+
       if (findId === undefined) {
         const cardText = document.createElement("p");
         cardText.className = "card-text";
