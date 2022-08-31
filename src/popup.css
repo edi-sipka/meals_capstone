@@ -64,3 +64,26 @@
   line-height: 44px;
   color: #172b4d;
 }
+
+.comment {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 44px;
+  color: #48922b;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
+
+.comments {
+  font-family: 'Rubik', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 18px;
+  color: #363636;
+  display: flex;
+  margin-top: 20px;
+  justify-content: center;
+}
