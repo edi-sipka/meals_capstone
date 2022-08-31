@@ -1,4 +1,4 @@
-import { setLikes } from "./apis";
+import { setLikes } from "./apis.js";
 
 const addLikes = async (idMeal, cardText) => {
   await fetch(setLikes, {

@@ -1,8 +1,5 @@
 import "../popup.css";
-import { mealDB } from "./apis";
-// import pizza from '../Assets/Images/pizza.png';
-
-// popup div
+import { mealDB } from "./apis.js";
 
 const reservation = async (idMeal) => {
   const reservation = document.createElement("div");
@@ -31,7 +28,9 @@ const reservation = async (idMeal) => {
   const meal = await fetch(mealDB);
   const { meals } = await meal.json();
   const data = meals.find((card) => card.idMeal === idMeal);
-  const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } = data;
+  const {
+    strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+  } = data;
   imagePopup.src = strMealThumb;
   imagePopup.classList = "image-popup";
   imagePopup.id = "image-popup";

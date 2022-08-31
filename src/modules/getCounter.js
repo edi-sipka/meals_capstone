@@ -1,8 +1,8 @@
-import { mealsCounter } from "./getElements";
+import { mealsCounter } from "./getElements.js";
 
 const getCounter = async () => {
   const meal = await fetch(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s"
+    "https://www.themealdb.com/api/json/v1/1/search.php?s",
   );
   const { meals } = await meal.json();
 
