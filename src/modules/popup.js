@@ -28,11 +28,13 @@ const popup = async (idMeal) => {
 
   const imagePopup = document.createElement('img');
   const meal = await fetch(
-    'https://www.themealdb.com/api/json/v1/1/search.php?s'
+    'https://www.themealdb.com/api/json/v1/1/search.php?s',
   );
   const { meals } = await meal.json();
   const data = meals.find((card) => card.idMeal === idMeal);
-  const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } = data;
+  const {
+    strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+  } = data;
   imagePopup.src = strMealThumb;
   imagePopup.classList = 'image-popup';
   imagePopup.id = 'image-popup';
