@@ -13,22 +13,22 @@ const showCard = async () => {
 
     meals.map((data) => {
       const { strMeal, strMealThumb, idMeal } = data;
-      const col = document.createElement("div");
-      col.className = "col-sm-6 col-md-4";
-      const card = document.createElement("div");
-      card.className = "card card-shadow";
-      const cardHeader = document.createElement("div");
-      cardHeader.className = "card-header card-image";
-      const img = document.createElement("img");
+      const col = document.createElement('div');
+      col.className = 'col-sm-6 col-md-4';
+      const card = document.createElement('div');
+      card.className = 'card card-shadow';
+      const cardHeader = document.createElement('div');
+      cardHeader.className = 'card-header card-image';
+      const img = document.createElement('img');
       img.src = strMealThumb;
       img.height = 300;
       img.width = 500;
-      const cardBody = document.createElement("div");
-      cardBody.className = "card-body";
-      const dFlex = document.createElement("div");
-      dFlex.className = "d-flex";
-      const cardTitle = document.createElement("h3");
-      cardTitle.className = "card-title";
+      const cardBody = document.createElement('div');
+      cardBody.className = 'card-body';
+      const dFlex = document.createElement('div');
+      dFlex.className = 'd-flex';
+      const cardTitle = document.createElement('h3');
+      cardTitle.className = 'card-title';
       cardTitle.innerText = strMeal;
       const div = document.createElement("div");
       const heartIcon = document.createElement("i");
@@ -44,12 +44,11 @@ const showCard = async () => {
       const reservationButton = document.createElement("button");
       reservationButton.className = "btn";
       reservationButton.innerText = "Reservation";
-
-      commentButton.addEventListener("click", () => {
+      commentButton.addEventListener('click', () => {
         popup(idMeal);
       });
 
-      reservationButton.addEventListener("click", () => {
+      reservationButton.addEventListener('click', () => {
         reservation(idMeal);
       });
 
