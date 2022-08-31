@@ -1,9 +1,6 @@
 import './style.css';
-import popup from './modules/popup.js';
-import showPopup from './modules/getElements.js';
+import showCard from './modules/showCard.js';
 
 document.addEventListener('DOMContentLoaded', () => {
-  showPopup.addEventListener('click', () => {
-    popup();
-  });
+  showCard();
 });
