@@ -1,5 +1,4 @@
-.popup,
-reservation {
+.popup {
   position: fixed;
   background: #c1c7d090;
   backdrop-filter: blur(4px);
