@@ -1,9 +1,8 @@
-import { mealsCounter } from "./getElements.js";
+import { mealDB } from './apis.js';
+import { mealsCounter } from './getElements.js';
 
 const getCounter = async () => {
-  const meal = await fetch(
-    "https://www.themealdb.com/api/json/v1/1/search.php?s",
-  );
+  const meal = await fetch(mealDB);
   const { meals } = await meal.json();
 
   mealsCounter.innerHTML = `Meals(${meals.length})`;
