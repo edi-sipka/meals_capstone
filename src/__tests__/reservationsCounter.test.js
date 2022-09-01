@@ -17,7 +17,7 @@ global.fetch = () => Promise.resolve({
 describe('Testing resevations counter', () => {
   test('count reservations', async () => {
     const reserving = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=2`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=2`,
     );
     const reserve = await reserving.json();
     const size = reserve.length;
