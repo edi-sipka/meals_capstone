@@ -1,22 +1,24 @@
+import { setComments } from "./apis.js";
+
 const addComment = async (inputText, commentText, idMeal) => {
   try {
     await fetch(
-      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments',
+      setComments,
       {
-        method: 'POST',
+        method: "POST",
         headers: {
-          'Content-Type': 'application/json',
+          "Content-Type": "application/json",
         },
         body: JSON.stringify({
           item_id: idMeal,
           username: inputText.value,
           comment: commentText.value,
         }),
-      },
+      }
     );
 
-    inputText.value = '';
-    commentText.value = '';
+    inputText.value = "";
+    commentText.value = "";
   } catch (error) {
     console.log(error.message);
   }

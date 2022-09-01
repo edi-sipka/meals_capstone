@@ -22,7 +22,7 @@ const showCard = async () => {
       const img = document.createElement('img');
       img.src = strMealThumb;
       img.height = 300;
-      img.width = 500;
+      img.width = 700;
       const cardBody = document.createElement('div');
       cardBody.className = 'card-body';
       const dFlex = document.createElement('div');
