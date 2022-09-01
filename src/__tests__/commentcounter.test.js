@@ -26,7 +26,7 @@ global.fetch = () => Promise.resolve({
 describe('Check comment counter', () => {
   test('Comment counting', async () => {
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=1`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`,
     );
     const comment = await commenting.json();
 
