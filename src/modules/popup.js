@@ -1,12 +1,8 @@
 /* eslint-disable camelcase */
-
 import { mealDB } from "./apis.js";
-import '../popup.css';
-import '../style.css';
-import addComment from './comments';
-// import pizza from '../Assets/Images/pizza.png';
-
-// popup div
+import "../popup.css";
+import "../style.css";
+import addComment from "./comments";
 
 const popup = async (idMeal) => {
   try {
@@ -73,36 +69,32 @@ const popup = async (idMeal) => {
     if (comments.length === undefined) {
       commentsHeader.innerText = `Comments (0)`;
     }
-    const commentHeader = document.createElement('h3');
-    commentHeader.textContent = 'Add Comment';
-    commentHeader.classList = 'header-comment';
+    const commentHeader = document.createElement("h3");
+    commentHeader.textContent = "Add Comment";
+    commentHeader.classList = "header-comment";
 
-    const formComment = document.createElement('form');
-    formComment.classList = 'form';
+    const formComment = document.createElement("form");
+    formComment.classList = "form";
 
-    const inputText = document.createElement('input');
-    inputText.classList = 'name';
-    inputText.type = 'text';
-    inputText.placeholder = 'Your name';
+    const inputText = document.createElement("input");
+    inputText.classList = "name";
+    inputText.type = "text";
+    inputText.placeholder = "Your name";
 
-    const commentText = document.createElement('textarea');
-    commentText.classList = 'textarea';
-    commentText.placeholder = 'Your comment';
+    const commentText = document.createElement("textarea");
+    commentText.classList = "textarea";
+    commentText.placeholder = "Your comment";
 
-    const commentButton = document.createElement('button');
-    commentButton.className = 'btn btn-top';
-    commentButton.innerText = 'Add comment';
+    const commentButton = document.createElement("button");
+    commentButton.className = "btn btn-top";
+    commentButton.innerText = "Add comment";
 
-    commentButton.addEventListener('click', (e) => {
+    commentButton.addEventListener("click", (e) => {
       e.preventDefault();
       addComment(
         inputText,
         commentText,
         idMeal,
-        popupWindow,
-        commentButton,
-        formComment,
-        detailsPopup,
       );
     });
 
