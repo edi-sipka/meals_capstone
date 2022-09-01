@@ -32,8 +32,9 @@ const popup = async (idMeal) => {
     const meal = await fetch(mealDB);
     const { meals } = await meal.json();
     const data = meals.find((card) => card.idMeal === idMeal);
-    const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } =
-      data;
+    const {
+      strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+    } = data;
     imagePopup.src = strMealThumb;
     imagePopup.classList = "image-popup";
     imagePopup.id = "image-popup";
@@ -58,7 +59,7 @@ const popup = async (idMeal) => {
     `;
 
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
     );
     const comments = await commenting.json();
 

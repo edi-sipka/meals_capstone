@@ -14,7 +14,7 @@ const addComment = async (inputText, commentText, idMeal) => {
           username: inputText.value,
           comment: commentText.value,
         }),
-      }
+      },
     );
 
     inputText.value = "";
