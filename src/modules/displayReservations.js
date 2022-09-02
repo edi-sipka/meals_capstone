@@ -13,12 +13,12 @@ const displayReservations = async (
 ) => {
   try {
     const reserving = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/W4ikkwLFSy60XQqjqKVJ/reservations?item_id=${idMeal}`,
     );
     const reserve = await reserving.json();
 
     reservationsHeader.innerText = `Reservations (${reserve.length})`;
-    reservationsHeader.classList = "comment";
+    reservationsHeader.classList = 'comment';
     wrapper.appendChild(reservationsHeader);
 
     if (reserving.status === 400) {
@@ -32,8 +32,8 @@ const displayReservations = async (
 
     reserve.map((data) => {
       const { username, date_start, date_end } = data;
-      const reservationsInput = document.createElement("p");
-      reservationsInput.classList = "comments";
+      const reservationsInput = document.createElement('p');
+      reservationsInput.classList = 'comments';
 
       reservationsInput.innerText = `${date_start} to ${date_end} by ${username}`;
       wrapper.appendChild(reservationsInput);

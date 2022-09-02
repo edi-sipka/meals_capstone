@@ -12,12 +12,12 @@ const displayComments = async (
 ) => {
   try {
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/W4ikkwLFSy60XQqjqKVJ/comments?item_id=${idMeal}`,
     );
     const comments = await commenting.json();
 
     commentsHeader.innerText = `Comments (${comments.length})`;
-    commentsHeader.classList = "comment";
+    commentsHeader.classList = 'comment';
     wrapper.appendChild(commentsHeader);
 
     if (commenting.status === 400) {
@@ -30,8 +30,8 @@ const displayComments = async (
 
     comments.map((data) => {
       const { username, comment, creation_date } = data;
-      const commentsInput = document.createElement("p");
-      commentsInput.classList = "comments";
+      const commentsInput = document.createElement('p');
+      commentsInput.classList = 'comments';
 
       commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
       wrapper.appendChild(commentsInput);
