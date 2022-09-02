@@ -10,7 +10,7 @@ const addComment = async (
   commentsHeader,
   formComment,
   commentButton,
-  wrapper
+  wrapper,
 ) => {
   try {
     await fetch(setComments, {
@@ -38,7 +38,7 @@ const addComment = async (
       commentsHeader,
       formComment,
       commentButton,
-      wrapper
+      wrapper,
     );
   } catch (error) {
     console.log(error.message);

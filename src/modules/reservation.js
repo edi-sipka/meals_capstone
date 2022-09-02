@@ -2,7 +2,7 @@
 import { mealDB } from "./apis.js";
 import "../popup.css";
 import "../style.css";
-import addReservation from "./addReservation";
+import addReservation from "./addReservation.js";
 
 const reservation = async (idMeal) => {
   try {
@@ -32,8 +32,9 @@ const reservation = async (idMeal) => {
     const meal = await fetch(mealDB);
     const { meals } = await meal.json();
     const data = meals.find((card) => card.idMeal === idMeal);
-    const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } =
-      data;
+    const {
+      strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+    } = data;
     imagePopup.src = strMealThumb;
     imagePopup.classList = "image-popup";
     imagePopup.id = "image-popup";
@@ -58,7 +59,7 @@ const reservation = async (idMeal) => {
     `;
 
     const reserving = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`,
     );
     const reserve = await reserving.json();
 
@@ -107,12 +108,12 @@ const reservation = async (idMeal) => {
         reservationHeader,
         ReserveButton,
         reserveForm,
-        wrapper
+        wrapper,
       );
     });
-    
+
     wrapper.appendChild(reservationsHeader);
-    
+
     if (reserving.status === 400) {
       popupWindow.appendChild(wrapper);
       popupWindow.appendChild(reservationHeader);

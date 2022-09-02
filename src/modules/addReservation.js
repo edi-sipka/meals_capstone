@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import displayReservations from "./displayReservations";
+import displayReservations from "./displayReservations.js";
 
 const addReservation = async (
   idMeal,
@@ -11,7 +11,7 @@ const addReservation = async (
   reservationHeader,
   ReserveButton,
   reserveForm,
-  wrapper
+  wrapper,
 ) => {
   try {
     await fetch(
@@ -27,7 +27,7 @@ const addReservation = async (
           date_start: dateStart.value,
           date_end: dateEnd.value,
         }),
-      }
+      },
     );
 
     usernameInput.value = "";
@@ -45,9 +45,8 @@ const addReservation = async (
       reservationHeader,
       ReserveButton,
       reserveForm,
-      wrapper
+      wrapper,
     );
-
   } catch (error) {
     console.log(error.message);
   }

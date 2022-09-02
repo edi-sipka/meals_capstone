@@ -2,7 +2,7 @@
 import { mealDB } from "./apis.js";
 import "../popup.css";
 import "../style.css";
-import addComment from "./comments";
+import addComment from "./comments.js";
 
 const popup = async (idMeal) => {
   try {
@@ -32,8 +32,9 @@ const popup = async (idMeal) => {
     const meal = await fetch(mealDB);
     const { meals } = await meal.json();
     const data = meals.find((card) => card.idMeal === idMeal);
-    const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } =
-      data;
+    const {
+      strMeal, strCategory, strArea, strIngredient1, strMealThumb,
+    } = data;
     imagePopup.src = strMealThumb;
     imagePopup.classList = "image-popup";
     imagePopup.id = "image-popup";
@@ -57,7 +58,7 @@ const popup = async (idMeal) => {
     `;
 
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
     );
     const comments = await commenting.json();
 
@@ -100,7 +101,7 @@ const popup = async (idMeal) => {
         commentsHeader,
         formComment,
         commentButton,
-        wrapper
+        wrapper,
       );
     });
 
@@ -120,7 +121,7 @@ const popup = async (idMeal) => {
         popup.remove();
       });
     }
-    
+
     comments.map((data) => {
       const { username, comment, creation_date } = data;
       const commentsInput = document.createElement("p");
@@ -138,9 +139,6 @@ const popup = async (idMeal) => {
     formComment.appendChild(commentText);
     formComment.appendChild(commentButton);
     popupWindow.appendChild(formComment);
-
-   
-
   } catch (error) {
     console.error(error.message);
   }

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const displayComments = async (
   inputText,
   commentText,
@@ -7,11 +8,11 @@ const displayComments = async (
   commentsHeader,
   formComment,
   commentButton,
-  wrapper
+  wrapper,
 ) => {
   try {
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
     );
     const comments = await commenting.json();
 

@@ -1,3 +1,4 @@
+/* eslint-disable camelcase */
 const displayReservations = async (
   idMeal,
   usernameInput,
@@ -8,18 +9,18 @@ const displayReservations = async (
   reservationHeader,
   ReserveButton,
   reserveForm,
-  wrapper
+  wrapper,
 ) => {
   try {
     const reserving = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`,
     );
     const reserve = await reserving.json();
 
     reservationsHeader.innerText = `Reservations (${reserve.length})`;
     reservationsHeader.classList = "comment";
     wrapper.appendChild(reservationsHeader);
-    
+
     if (reserving.status === 400) {
       popupWindow.appendChild(reservationHeader);
       reserveForm.appendChild(usernameInput);
