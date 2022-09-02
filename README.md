@@ -1,4 +1,4 @@
-# Meals Capsone
+# Meals Capstone
 
 This is JavaScript Module capstone project,
 In this Project We have created website for Meals info, commenting and reservation of meals.
@@ -14,13 +14,15 @@ We have used API to fetch data also for likes, comments and reservation.
 - JavaScript ES6
 - WebPack
 
+## Screenshots
+![Home page](./src/Assets/Images/Homepage.png)
 ## Live Demo
 
-[Live Demo Link]()
+[Live Demo Link](https://edi-sipka.github.io/meals_capstone/dist/)
 
 ## Demo Video
 
-[Demonstration Video]()
+[Demonstration Video](https://drive.google.com/file/d/1aVRfENYXQBSB4Cog9c5NW-hVM7PzEYnz/view?usp=sharing)
 
 ## Getting Started
 
@@ -44,6 +46,10 @@ To get a local copy of this exercise, Please follow these simple example steps.
 ### Run this command to build your webpack
 
 > npm run build
+> 
+### Run this command to test our project
+
+> npm run test
 
 ## Getting Started
 
@@ -95,4 +101,4 @@ Contributions, issues, and feature requests are welcome!
 
 ## :memo: License
 
-This project is [MIT](./MIT.md) licensed.
+This project is [MIT](./LICENSE) licensed.
