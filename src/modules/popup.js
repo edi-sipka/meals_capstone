@@ -32,9 +32,8 @@ const popup = async (idMeal) => {
     const meal = await fetch(mealDB);
     const { meals } = await meal.json();
     const data = meals.find((card) => card.idMeal === idMeal);
-    const {
-      strMeal, strCategory, strArea, strIngredient1, strMealThumb,
-    } = data;
+    const { strMeal, strCategory, strArea, strIngredient1, strMealThumb } =
+      data;
     imagePopup.src = strMealThumb;
     imagePopup.classList = "image-popup";
     imagePopup.id = "image-popup";
@@ -51,7 +50,6 @@ const popup = async (idMeal) => {
     detailsPopup.classList = "details";
     detailsPopup.id = "details";
     detailsPopup.innerHTML = ` 
-
     <p class="meal" id="meal">Meal: ${strMeal}</p>
     <p class="meal" id="meal">Category: ${strCategory}</p>
     <p class="meal" id="meal">Area: ${strArea}</p>
@@ -59,13 +57,15 @@ const popup = async (idMeal) => {
     `;
 
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`
     );
     const comments = await commenting.json();
 
     const commentsHeader = document.createElement("h3");
     commentsHeader.innerText = `Comments (${comments.length})`;
     commentsHeader.classList = "comment";
+    const wrapper = document.createElement("div");
+    wrapper.className = "wrapper";
     if (comments.length === undefined) {
       commentsHeader.innerText = `Comments (0)`;
     }
@@ -95,37 +95,52 @@ const popup = async (idMeal) => {
         inputText,
         commentText,
         idMeal,
+        popupWindow,
+        commentHeader,
+        commentsHeader,
+        formComment,
+        commentButton,
+        wrapper
       );
     });
 
-    popupWindow.appendChild(detailsPopup);
-    popupWindow.appendChild(commentsHeader);
-    popupWindow.appendChild(commentHeader);
-    formComment.appendChild(inputText);
-    formComment.appendChild(commentText);
-    formComment.appendChild(commentButton);
-    popupWindow.appendChild(formComment);
+    wrapper.appendChild(commentsHeader);
+
+    if (commenting.status === 400) {
+      popupWindow.appendChild(wrapper);
+      popupWindow.appendChild(commentHeader);
+      formComment.appendChild(inputText);
+      formComment.appendChild(commentText);
+      formComment.appendChild(commentButton);
+      popupWindow.appendChild(formComment);
+    }
 
     if (xButton) {
       xButton.addEventListener("click", () => {
         popup.remove();
       });
     }
-
+    
     comments.map((data) => {
       const { username, comment, creation_date } = data;
       const commentsInput = document.createElement("p");
       commentsInput.classList = "comments";
-      commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
 
-      popupWindow.appendChild(commentsInput);
-      popupWindow.appendChild(commentHeader);
-      formComment.appendChild(inputText);
-      formComment.appendChild(commentText);
-      formComment.appendChild(commentButton);
-      popupWindow.appendChild(formComment);
+      commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
+      wrapper.appendChild(commentsInput);
       return data;
     });
+
+    popupWindow.appendChild(detailsPopup);
+    popupWindow.appendChild(wrapper);
+    popupWindow.appendChild(commentHeader);
+    formComment.appendChild(inputText);
+    formComment.appendChild(commentText);
+    formComment.appendChild(commentButton);
+    popupWindow.appendChild(formComment);
+
+   
+
   } catch (error) {
     console.error(error.message);
   }
