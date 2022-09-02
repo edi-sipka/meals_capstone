@@ -59,7 +59,7 @@ const reservation = async (idMeal) => {
     `;
 
     const reserving = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations?item_id=${idMeal}`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/W4ikkwLFSy60XQqjqKVJ/reservations?item_id=${idMeal}`,
     );
     const reserve = await reserving.json();
 

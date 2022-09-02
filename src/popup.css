@@ -10,7 +10,7 @@
 }
 
 .window {
-  background-color: #fff;
+  background: linear-gradient(-45deg, #24ff72, #197ac9);
   position: absolute;
   left: 50%;
   top: 3rem;
@@ -26,6 +26,9 @@
 
 .image-popup {
   max-height: 30rem;
+  border-radius: 12px;
+  box-shadow: 0 12px 24px #212529;
+  margin-top: 20px;
 }
 
 .close {
@@ -35,15 +38,16 @@
   font-family: 'Rubik', sans-serif;
   display: flex;
   justify-content: flex-end;
+  color: white;
 }
 
 .title {
   font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 700;
-  font-size: 32px;
+  font-size: 52px;
   line-height: 44px;
-  color: #172b4d;
+  color: #fff;
   display: flex;
   justify-content: center;
   margin-top: 30px;
@@ -59,22 +63,22 @@
 .meal {
   font-family: 'Rubik', sans-serif;
   font-style: normal;
-  font-weight: 500;
-  font-size: 22px;
+  font-weight: 400;
+  font-size: 28px;
   line-height: 44px;
-  color: #172b4d;
+  color: #fff;
 }
 
 .comment {
   font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 32px;
   line-height: 44px;
-  color: #48922b;
   display: flex;
   margin-top: 20px;
   justify-content: center;
+  color: #2f2b92;
 }
 
 .comments {
@@ -82,22 +86,28 @@
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
-  color: #363636;
   display: flex;
   margin-top: 20px;
   justify-content: center;
+  background-color: #6ca256;
+  box-shadow: 5px 5px 10px rgb(43 73 100);
+  border: 1px solid rgb(85, 120, 150);
+  padding: 1rem 0;
+  margin-bottom: 1rem;
+  border-radius: 3rem;
+  color: #fff;
 }
 
 .header-comment {
   font-family: 'Rubik', sans-serif;
   font-style: normal;
   font-weight: 500;
-  font-size: 24px;
+  font-size: 28px;
   line-height: 44px;
-  color: #48922b;
   display: flex;
   margin-top: 20px;
   justify-content: center;
+  color: #2f2b92;
 }
 
 .form {

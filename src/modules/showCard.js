@@ -1,8 +1,8 @@
-import addLikes from "./addLikes.js";
-import { mealDB, setLikes } from "./apis.js";
-import { cardData } from "./getElements.js";
-import popup from "./popup.js";
-import reservation from "./reservation.js";
+import addLikes from './addLikes.js';
+import { mealDB, setLikes } from './apis.js';
+import { cardData } from './getElements.js';
+import popup from './popup.js';
+import reservation from './reservation.js';
 
 const showCard = async () => {
   try {
@@ -30,20 +30,20 @@ const showCard = async () => {
       const cardTitle = document.createElement('h3');
       cardTitle.className = 'card-title';
       cardTitle.innerText = strMeal;
-      const div = document.createElement("div");
-      const heartIcon = document.createElement("i");
-      heartIcon.className = "fa fa-heart";
-      const cardText = document.createElement("p");
-      cardText.className = "card-text";
-      const cardFooter = document.createElement("div");
-      cardFooter.className = "card-footer";
-      const commentButton = document.createElement("button");
-      commentButton.className = "btn";
-      commentButton.innerText = "Comment";
-      commentButton.setAttribute("id", "showPopup");
-      const reservationButton = document.createElement("button");
-      reservationButton.className = "btn";
-      reservationButton.innerText = "Reservation";
+      const div = document.createElement('div');
+      const heartIcon = document.createElement('i');
+      heartIcon.className = 'fa fa-heart';
+      const cardText = document.createElement('p');
+      cardText.className = 'card-text';
+      const cardFooter = document.createElement('div');
+      cardFooter.className = 'card-footer';
+      const commentButton = document.createElement('button');
+      commentButton.className = 'btn';
+      commentButton.innerText = 'Comment';
+      commentButton.setAttribute('id', 'showPopup');
+      const reservationButton = document.createElement('button');
+      reservationButton.className = 'btn';
+      reservationButton.innerText = 'Reservation';
       commentButton.addEventListener('click', () => {
         popup(idMeal);
       });
@@ -52,7 +52,7 @@ const showCard = async () => {
         reservation(idMeal);
       });
 
-      heartIcon.addEventListener("click", () => {
+      heartIcon.addEventListener('click', () => {
         addLikes(idMeal, cardText);
       });
 

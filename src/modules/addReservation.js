@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import displayReservations from "./displayReservations.js";
+import displayReservations from './displayReservations.js';
 
 const addReservation = async (
   idMeal,
@@ -15,11 +15,11 @@ const addReservation = async (
 ) => {
   try {
     await fetch(
-      "https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/reservations",
+      'https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/W4ikkwLFSy60XQqjqKVJ/reservations',
       {
-        method: "POST",
+        method: 'POST',
         headers: {
-          "Content-Type": "application/json",
+          'Content-Type': 'application/json',
         },
         body: JSON.stringify({
           item_id: idMeal,
@@ -30,10 +30,10 @@ const addReservation = async (
       },
     );
 
-    usernameInput.value = "";
-    dateStart.value = "";
-    dateEnd.value = "";
-    wrapper.innerHTML = "";
+    usernameInput.value = '';
+    dateStart.value = '';
+    dateEnd.value = '';
+    wrapper.innerHTML = '';
 
     displayReservations(
       idMeal,

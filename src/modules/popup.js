@@ -1,34 +1,34 @@
 /* eslint-disable camelcase */
-import { mealDB } from "./apis.js";
-import "../popup.css";
-import "../style.css";
-import addComment from "./comments.js";
+import { mealDB } from './apis.js';
+import '../popup.css';
+import '../style.css';
+import addComment from './comments.js';
 
 const popup = async (idMeal) => {
   try {
-    const popup = document.createElement("div");
-    popup.id = "popup";
-    popup.classList = "popup";
+    const popup = document.createElement('div');
+    popup.id = 'popup';
+    popup.classList = 'popup';
     document.body.appendChild(popup);
 
     // popup window
-    const popupWindow = document.createElement("div");
-    popupWindow.classList = "window";
+    const popupWindow = document.createElement('div');
+    popupWindow.classList = 'window';
     popup.appendChild(popupWindow);
 
-    const popupHead = document.createElement("div");
-    popupHead.classList = "popup-head";
-    popupHead.id = "popup-head";
+    const popupHead = document.createElement('div');
+    popupHead.classList = 'popup-head';
+    popupHead.id = 'popup-head';
 
     popupWindow.appendChild(popupHead);
 
-    const xButton = document.createElement("p");
-    xButton.id = "close";
-    xButton.classList = "close";
-    xButton.innerHTML = "X";
+    const xButton = document.createElement('p');
+    xButton.id = 'close';
+    xButton.classList = 'close';
+    xButton.innerHTML = 'X';
     popupHead.appendChild(xButton);
 
-    const imagePopup = document.createElement("img");
+    const imagePopup = document.createElement('img');
     const meal = await fetch(mealDB);
     const { meals } = await meal.json();
     const data = meals.find((card) => card.idMeal === idMeal);
@@ -36,20 +36,20 @@ const popup = async (idMeal) => {
       strMeal, strCategory, strArea, strIngredient1, strMealThumb,
     } = data;
     imagePopup.src = strMealThumb;
-    imagePopup.classList = "image-popup";
-    imagePopup.id = "image-popup";
+    imagePopup.classList = 'image-popup';
+    imagePopup.id = 'image-popup';
     popupWindow.appendChild(imagePopup);
 
-    const popupHeading = document.createElement("h2");
-    popupHeading.id = "title";
-    popupHeading.classList = "title";
+    const popupHeading = document.createElement('h2');
+    popupHeading.id = 'title';
+    popupHeading.classList = 'title';
     popupHeading.innerHTML = strMeal;
     popupWindow.appendChild(popupHeading);
 
     // Popup Details
-    const detailsPopup = document.createElement("div");
-    detailsPopup.classList = "details";
-    detailsPopup.id = "details";
+    const detailsPopup = document.createElement('div');
+    detailsPopup.classList = 'details';
+    detailsPopup.id = 'details';
     detailsPopup.innerHTML = ` 
     <p class="meal" id="meal">Meal: ${strMeal}</p>
     <p class="meal" id="meal">Category: ${strCategory}</p>
@@ -58,39 +58,40 @@ const popup = async (idMeal) => {
     `;
 
     const commenting = await fetch(
-      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/dFxlTuBqbzDgoSJBvIPk/comments?item_id=${idMeal}`,
+      `https://us-central1-involvement-api.cloudfunctions.net/capstoneApi/apps/W4ikkwLFSy60XQqjqKVJ/comments?item_id=${idMeal}`,
     );
     const comments = await commenting.json();
 
-    const commentsHeader = document.createElement("h3");
+    const commentsHeader = document.createElement('h3');
     commentsHeader.innerText = `Comments (${comments.length})`;
-    commentsHeader.classList = "comment";
-    const wrapper = document.createElement("div");
-    wrapper.className = "wrapper";
+    commentsHeader.classList = 'comment';
+    const wrapper = document.createElement('div');
+    wrapper.className = 'wrapper';
+
     if (comments.length === undefined) {
       commentsHeader.innerText = `Comments (0)`;
     }
-    const commentHeader = document.createElement("h3");
-    commentHeader.textContent = "Add Comment";
-    commentHeader.classList = "header-comment";
+    const commentHeader = document.createElement('h3');
+    commentHeader.textContent = 'Add Comment';
+    commentHeader.classList = 'header-comment';
 
-    const formComment = document.createElement("form");
-    formComment.classList = "form";
+    const formComment = document.createElement('form');
+    formComment.classList = 'form';
 
-    const inputText = document.createElement("input");
-    inputText.classList = "name";
-    inputText.type = "text";
-    inputText.placeholder = "Your name";
+    const inputText = document.createElement('input');
+    inputText.classList = 'name';
+    inputText.type = 'text';
+    inputText.placeholder = 'Your name';
 
-    const commentText = document.createElement("textarea");
-    commentText.classList = "textarea";
-    commentText.placeholder = "Your comment";
+    const commentText = document.createElement('textarea');
+    commentText.classList = 'textarea';
+    commentText.placeholder = 'Your comment';
 
-    const commentButton = document.createElement("button");
-    commentButton.className = "btn btn-top";
-    commentButton.innerText = "Add comment";
+    const commentButton = document.createElement('button');
+    commentButton.className = 'btn btn-top';
+    commentButton.innerText = 'Add comment';
 
-    commentButton.addEventListener("click", (e) => {
+    commentButton.addEventListener('click', (e) => {
       e.preventDefault();
       addComment(
         inputText,
@@ -117,15 +118,15 @@ const popup = async (idMeal) => {
     }
 
     if (xButton) {
-      xButton.addEventListener("click", () => {
+      xButton.addEventListener('click', () => {
         popup.remove();
       });
     }
 
     comments.map((data) => {
       const { username, comment, creation_date } = data;
-      const commentsInput = document.createElement("p");
-      commentsInput.classList = "comments";
+      const commentsInput = document.createElement('p');
+      commentsInput.classList = 'comments';
 
       commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
       wrapper.appendChild(commentsInput);
