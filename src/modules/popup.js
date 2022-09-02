@@ -2,7 +2,7 @@
 import { mealDB } from "./apis.js";
 import "../popup.css";
 import "../style.css";
-import addComment from "./comments";
+import addComment from "./comments.js";
 
 const popup = async (idMeal) => {
   try {
@@ -51,7 +51,6 @@ const popup = async (idMeal) => {
     detailsPopup.classList = "details";
     detailsPopup.id = "details";
     detailsPopup.innerHTML = ` 
-
     <p class="meal" id="meal">Meal: ${strMeal}</p>
     <p class="meal" id="meal">Category: ${strCategory}</p>
     <p class="meal" id="meal">Area: ${strArea}</p>
@@ -66,6 +65,8 @@ const popup = async (idMeal) => {
     const commentsHeader = document.createElement("h3");
     commentsHeader.innerText = `Comments (${comments.length})`;
     commentsHeader.classList = "comment";
+    const wrapper = document.createElement("div");
+    wrapper.className = "wrapper";
     if (comments.length === undefined) {
       commentsHeader.innerText = `Comments (0)`;
     }
@@ -95,16 +96,25 @@ const popup = async (idMeal) => {
         inputText,
         commentText,
         idMeal,
+        popupWindow,
+        commentHeader,
+        commentsHeader,
+        formComment,
+        commentButton,
+        wrapper,
       );
     });
 
-    popupWindow.appendChild(detailsPopup);
-    popupWindow.appendChild(commentsHeader);
-    popupWindow.appendChild(commentHeader);
-    formComment.appendChild(inputText);
-    formComment.appendChild(commentText);
-    formComment.appendChild(commentButton);
-    popupWindow.appendChild(formComment);
+    wrapper.appendChild(commentsHeader);
+
+    if (commenting.status === 400) {
+      popupWindow.appendChild(wrapper);
+      popupWindow.appendChild(commentHeader);
+      formComment.appendChild(inputText);
+      formComment.appendChild(commentText);
+      formComment.appendChild(commentButton);
+      popupWindow.appendChild(formComment);
+    }
 
     if (xButton) {
       xButton.addEventListener("click", () => {
@@ -116,16 +126,19 @@ const popup = async (idMeal) => {
       const { username, comment, creation_date } = data;
       const commentsInput = document.createElement("p");
       commentsInput.classList = "comments";
-      commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
 
-      popupWindow.appendChild(commentsInput);
-      popupWindow.appendChild(commentHeader);
-      formComment.appendChild(inputText);
-      formComment.appendChild(commentText);
-      formComment.appendChild(commentButton);
-      popupWindow.appendChild(formComment);
+      commentsInput.innerText = `${creation_date} ${username} : ${comment}`;
+      wrapper.appendChild(commentsInput);
       return data;
     });
+
+    popupWindow.appendChild(detailsPopup);
+    popupWindow.appendChild(wrapper);
+    popupWindow.appendChild(commentHeader);
+    formComment.appendChild(inputText);
+    formComment.appendChild(commentText);
+    formComment.appendChild(commentButton);
+    popupWindow.appendChild(formComment);
   } catch (error) {
     console.error(error.message);
   }
